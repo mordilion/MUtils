@@ -1,6 +1,6 @@
 # MUtils
 
-MUtils is a collection of useful functions and to provide some PHP 8.0 > features for older PHP versions.
+MUtils is a collection of useful functions and to provide some PHP 8.0+ features for older PHP versions.
 
 ## PHP 8.0+ Features
 If you use the functions from this Library, it checks if you are using PHP 8.0+ and use then the internal functions (pass-through).
