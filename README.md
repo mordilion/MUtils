@@ -40,8 +40,8 @@ if (MUtils\Strings\str_starts_with('Some Text', 'Some')) {
 ```php
 <?php
 
-// or MUtils\Bit::startsWith()
-if (MUtils\Bit\bit_isset('Some Text', 'Some')) {
+// or MUtils\Bit::isset()
+if (MUtils\Bit\bit_isset(12, 4)) {
     // ...
 }
 ```
