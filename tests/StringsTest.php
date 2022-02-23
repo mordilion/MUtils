@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use function MUtils\Strings\str_ends_with as UtilsStrEndsWith;
 use function MUtils\Strings\str_starts_with as UtilsStrStartsWith;
 
-final class StringTest extends TestCase
+final class StringsTest extends TestCase
 {
     public function testStrStartsWithReturnsTrueForTheEqualStr(): void
     {

@@ -25,5 +25,5 @@ function bit_set(int $set, int $bit): int
 
 function bit_unset(int $set, int $bit): int
 {
-    return $set ^ $bit;
+    return $set & ~$bit;
 }

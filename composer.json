@@ -15,6 +15,7 @@
             "MUtils\\": "src/"
         },
         "files": [
+            "src/Functions/Bit.php",
             "src/Functions/Sort.php",
             "src/Functions/Strings.php"
         ]
