@@ -1,0 +1,28 @@
+{
+    "name": "mordilion/mutils",
+    "description": "Useful little helpers",
+    "type": "library",
+    "require": {
+        "php": ">=7.1 || >=8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.20"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MUtils\\": "src/"
+        },
+        "files": [
+            "src/Functions/Sort.php",
+            "src/Functions/Strings.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Henning Huncke",
+            "email": "mordilion@gmx.de"
+        }
+    ]
+}
