@@ -10,8 +10,10 @@ If you use the functions from this Library, it checks if you are using PHP 8.0+ 
   - _str_contains, str_ends_with, str_starts_with_
 
 ## Useful Functions
-- Bitwise Function - Some useful functions to work with sets of bits.
+- Bitwise Functions - Some useful functions to work with sets of bits.
   - _bit_set, bit_isset, bit_unset_
+- Reflection Functions - Useful functions to get ReflectionClass, ReflectionMethod and ReflectionProperty on inheritance
+  - _get_reflection_class, get_reflection_method, get_reflection_property_
 
 ## Examples
 ### Use of sort functions
@@ -42,6 +44,19 @@ if (MUtils\Strings\str_starts_with('Some Text', 'Some')) {
 
 // or MUtils\Bit::isset()
 if (MUtils\Bit\bit_isset(12, 4)) {
+    // ...
+}
+```
+
+### Use of reflection functions
+```php
+<?php
+
+// or MUtils\Objects::getReflectionMethod()
+$instance = new Something();
+$method = MUtils\Objects\get_reflection_method($instance, 'foo');
+if ($method) {
+    $method->invoke($instance, 'arg');
     // ...
 }
 ```

@@ -15,38 +15,39 @@ namespace MUtils\Objects;
 
 use InvalidArgumentException;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionMethod;
 use ReflectionProperty;
 
 /**
- * @param object|null $instance
+ * @param string|object|null $objectOrClass
  *
- * @throws InvalidArgumentException
+ * @throws InvalidArgumentException|ReflectionException
  */
-function get_reflection_class($instance): ?ReflectionClass
+function get_reflection_class($objectOrClass): ?ReflectionClass
 {
-    if (!$instance) {
+    if (!$objectOrClass) {
         return null;
     }
 
-    if (!is_object($instance)) {
-        throw new InvalidArgumentException('$instance must be an object or null');
+    if (!is_object($objectOrClass) && !is_string($objectOrClass)) {
+        throw new InvalidArgumentException('$objectOrClass must be an object, class or null');
     }
 
-    if ($instance instanceof ReflectionClass) {
-        return $instance;
+    if ($objectOrClass instanceof ReflectionClass) {
+        return $objectOrClass;
     }
 
-    return new ReflectionClass($instance);
+    return new ReflectionClass($objectOrClass);
 }
 
 /**
- * @param object|null $instance
- * @param string      $name
+ * @param string|object|null $objectOrClass
+ * @param string             $name
  */
-function get_reflection_method($instance, string $name): ?ReflectionMethod
+function get_reflection_method($objectOrClass, string $name): ?ReflectionMethod
 {
-    $reflectionClass = get_reflection_class($instance);
+    $reflectionClass = get_reflection_class($objectOrClass);
 
     if (!$reflectionClass) {
         return null;
@@ -62,12 +63,12 @@ function get_reflection_method($instance, string $name): ?ReflectionMethod
 }
 
 /**
- * @param object|null $instance
- * @param string      $name
+ * @param string|object|null $objectOrClass
+ * @param string             $name
  */
-function get_reflection_property($instance, string $name): ?ReflectionProperty
+function get_reflection_property($objectOrClass, string $name): ?ReflectionProperty
 {
-    $reflectionClass = get_reflection_class($instance);
+    $reflectionClass = get_reflection_class($objectOrClass);
 
     if (!$reflectionClass) {
         return null;

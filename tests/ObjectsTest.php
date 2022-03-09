@@ -17,6 +17,7 @@ final class ObjectsTest extends TestCase
     public function testGetReflectionClassReturnsObject(): void
     {
         $this->assertInstanceOf(ReflectionClass::class, get_reflection_class(new Dummy()));
+        $this->assertInstanceOf(ReflectionClass::class, get_reflection_class(Dummy::class));
     }
 
     public function testGetReflectionMethodReturnsNullForUnknownMethod()
