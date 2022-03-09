@@ -4,7 +4,7 @@ MUtils is a collection of useful functions and to provide some PHP 8.0+ features
 
 ## PHP 8.0+ Features
 If you use the functions from this Library, it checks if you are using PHP 8.0+ and use then the internal functions (pass-through).
-- Stable Sorting (Slow Performance!) - https://wiki.php.net/rfc/stable_sorting
+- Stable Sorting (Slow Performance if it's not pass-through!) - https://wiki.php.net/rfc/stable_sorting
   - _asort, arsort, ksort, krsort, natcasesort, natsort, rsort, sort, uasort, uksort, usort_
 - String Functions
   - _str_contains, str_ends_with, str_starts_with_
