@@ -43,7 +43,6 @@ function get_reflection_class($objectOrClass): ?ReflectionClass
 
 /**
  * @param string|object|null $objectOrClass
- * @param string             $name
  */
 function get_reflection_method($objectOrClass, string $name): ?ReflectionMethod
 {
@@ -64,7 +63,6 @@ function get_reflection_method($objectOrClass, string $name): ?ReflectionMethod
 
 /**
  * @param string|object|null $objectOrClass
- * @param string             $name
  */
 function get_reflection_property($objectOrClass, string $name): ?ReflectionProperty
 {

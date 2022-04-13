@@ -3,13 +3,11 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use function MUtils\Bit\bit_isset;
-use function MUtils\Bit\bit_set;
-use function MUtils\Bit\bit_unset;
-use function MUtils\Strings\str_ends_with as UtilsStrEndsWith;
-use function MUtils\Strings\str_starts_with as UtilsStrStartsWith;
+use function MUtils\Bits\bit_isset;
+use function MUtils\Bits\bit_set;
+use function MUtils\Bits\bit_unset;
 
-final class BitTest extends TestCase
+final class BitsTest extends TestCase
 {
     public function testBitIsset(): void
     {

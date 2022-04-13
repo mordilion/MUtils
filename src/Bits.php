@@ -13,20 +13,20 @@ declare(strict_types=1);
 
 namespace MUtils;
 
-class Bit
+class Bits
 {
     public static function isset(int $set, int $bit): bool
     {
-        return Bit\bit_isset($set, $bit);
+        return Bits\bit_isset($set, $bit);
     }
 
     public static function set(int $set, int $bit): int
     {
-        return Bit\bit_set($set, $bit);
+        return Bits\bit_set($set, $bit);
     }
 
     public static function unset(int $set, int $bit): int
     {
-        return Bit\bit_unset($set, $bit);
+        return Bits\bit_unset($set, $bit);
     }
 }

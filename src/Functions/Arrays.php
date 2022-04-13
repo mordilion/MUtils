@@ -11,8 +11,9 @@
 
 declare(strict_types=1);
 
-namespace MUtils\Sort;
+namespace MUtils\Arrays;
 
+use InvalidArgumentException;
 use function arsort as PHPArsort;
 use function asort as PHPAsort;
 use function krsort as PHPKrsort;
@@ -59,6 +60,54 @@ function array_compare_flags($a, $b, int $flags): int
         default:
             return $a <=> $b;
     }
+}
+
+function array_group_by(array $array, bool $preserveKeys, $column): array
+{
+    if (!is_string($column) && !is_int($column) && !is_float($column) && !is_callable($column)) {
+        throw new InvalidArgumentException('The provided $column must be a string, an integer, or a callback');
+    }
+
+    $grouped = [];
+    $getColumnKey = static function ($value, $column) {
+        if (is_callable($column)) {
+            return $column($value);
+        }
+
+        if (is_object($value) && property_exists($value, $column)) {
+            return $value->$column;
+        }
+
+        return $value[$column] ?? null;
+    };
+
+    foreach ($array as $key => $value) {
+        $columnKey = $getColumnKey($value, $column);
+
+        if ($columnKey === null) {
+            continue;
+        }
+
+        if ($preserveKeys) {
+            $grouped[$columnKey][$key] = $value;
+
+            continue;
+        }
+
+        $grouped[$columnKey][] = $value;
+    }
+
+    if (func_num_args() > 3) {
+        // more than 1 column!
+        $args = func_get_args();
+
+        foreach ($grouped as $key => $value) {
+            $params = array_merge([$value], [$preserveKeys], array_slice($args, 3, func_num_args()));
+            $grouped[$key] = array_group_by(...$params);
+        }
+    }
+
+    return $grouped;
 }
 
 /**

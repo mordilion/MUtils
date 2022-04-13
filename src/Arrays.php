@@ -13,65 +13,72 @@ declare(strict_types=1);
 
 namespace MUtils;
 
-class Sort
+class Arrays
 {
     public static function compareFlags($a, $b, int $flags): int
     {
-        return Sort\array_compare_flags($a, $b, $flags);
+        return Arrays\array_compare_flags($a, $b, $flags);
     }
 
     public static function associativeReverseSort(array &$array, int $flags = SORT_REGULAR): bool
     {
-        return Sort\arsort($array, $flags);
+        return Arrays\arsort($array, $flags);
     }
 
     public static function associativeSort(array &$array, int $flags = SORT_REGULAR): bool
     {
-        return Sort\asort($array, $flags);
+        return Arrays\asort($array, $flags);
+    }
+
+    public static function groupBy(array $array, bool $preserveKeys, $column): array
+    {
+        $args = func_get_args();
+
+        return Arrays\array_group_by(...$args);
     }
 
     public static function keyReverseSort(array &$array, int $flags = SORT_REGULAR): bool
     {
-        return Sort\krsort($array, $flags);
+        return Arrays\krsort($array, $flags);
     }
 
     public static function keySort(array &$array, int $flags = SORT_REGULAR): bool
     {
-        return Sort\ksort($array, $flags);
+        return Arrays\ksort($array, $flags);
     }
 
     public static function naturalCaseInsensitiveSort(array &$array): bool
     {
-        return Sort\natcasesort($array);
+        return Arrays\natcasesort($array);
     }
 
     public static function naturalSort(array &$array): bool
     {
-        return Sort\natsort($array);
+        return Arrays\natsort($array);
     }
 
     public static function reverseSort(array &$array, int $flags = SORT_REGULAR): bool
     {
-        return Sort\rsort($array, $flags);
+        return Arrays\rsort($array, $flags);
     }
 
     public static function sort(array &$array, int $flags = SORT_REGULAR): bool
     {
-        return Sort\sort($array, $flags);
+        return Arrays\sort($array, $flags);
     }
 
     public static function userAssociativeSort(array &$array, callable $callback): bool
     {
-        return Sort\uasort($array, $callback);
+        return Arrays\uasort($array, $callback);
     }
 
     public static function userKeySort(array &$array, callable $callback): bool
     {
-        return Sort\uksort($array, $callback);
+        return Arrays\uksort($array, $callback);
     }
 
     public static function userSort(array &$array, callable $callback): bool
     {
-        return Sort\usort($array, $callback);
+        return Arrays\usort($array, $callback);
     }
 }

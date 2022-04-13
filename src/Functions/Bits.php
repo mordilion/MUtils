@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace MUtils\Bit;
+namespace MUtils\Bits;
 
 function bit_isset(int $set, int $bit): bool
 {

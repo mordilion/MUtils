@@ -24,8 +24,7 @@ class Objects
     /**
      * @param object|null $instance
      *
-     * @throws InvalidArgumentException
-     * @throws ReflectionException
+     * @throws InvalidArgumentException|ReflectionException
      */
     public static function getReflectionClass($instance): ?ReflectionClass
     {
@@ -34,10 +33,8 @@ class Objects
 
     /**
      * @param object|null $instance
-     * @param string      $name
      *
      * @throws InvalidArgumentException
-     * @throws ReflectionException
      */
     public static function getReflectionMethod($instance, string $name): ?ReflectionMethod
     {
@@ -46,10 +43,8 @@ class Objects
 
     /**
      * @param object|null $instance
-     * @param string      $name
      *
      * @throws InvalidArgumentException
-     * @throws ReflectionException
      */
     public static function getReflectionProperty($instance, string $name): ?ReflectionProperty
     {
