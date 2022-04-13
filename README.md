@@ -24,7 +24,7 @@ If you use the functions from this Library, it checks if you are using PHP 8.0+ 
 
 $array = [128, 2, 16, 64, 8, 1, 32];
 
-// or MUtils\Sort::userAssociativeSort()
+// or MUtils\Arrays::userAssociativeSort()
 MUtils\Arrays\uasort($array, static function ($left, $right) {
     return $left <=> $right;
 })
