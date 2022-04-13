@@ -44,7 +44,7 @@ if (MUtils\Strings\str_starts_with('Some Text', 'Some')) {
 ```php
 <?php
 
-// or MUtils\Bit::isset()
+// or MUtils\Bits::isset()
 if (MUtils\Bits\bit_isset(12, 4)) {
     // ...
 }
