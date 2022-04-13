@@ -4,12 +4,14 @@ MUtils is a collection of useful functions and to provide some PHP 8.0+ features
 
 ## PHP 8.0+ Features
 If you use the functions from this Library, it checks if you are using PHP 8.0+ and use then the internal functions (pass-through).
-- Array Functions (Sorting functions have a slow performance if it's not pass-through! - https://wiki.php.net/rfc/stable_sorting)
-  - _array_group_by, asort, arsort, ksort, krsort, natcasesort, natsort, rsort, sort, uasort, uksort, usort_
+- Sorting Functions (They have a slow performance if it's not pass-through! - https://wiki.php.net/rfc/stable_sorting)
+  - _asort, arsort, ksort, krsort, natcasesort, natsort, rsort, sort, uasort, uksort, usort_
 - String Functions
   - _str_contains, str_ends_with, str_starts_with_
 
 ## Useful Functions
+- Array Functions - Functions to optimize working with arrays
+  - _array_compare_flags, array_group_by_
 - Bitwise Functions - Some useful functions to work with sets of bits.
   - _bit_set, bit_isset, bit_unset_
 - Reflection Functions - Useful functions to get ReflectionClass, ReflectionMethod and ReflectionProperty on inheritance
