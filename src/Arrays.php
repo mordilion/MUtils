@@ -20,6 +20,11 @@ class Arrays
         return Arrays\array_compare_flags($a, $b, $flags);
     }
 
+    public static function moveElement(array &$array, int $fromIndex, int $toIndex): void
+    {
+        Arrays\array_move_element($array, $fromIndex, $toIndex);
+    }
+
     public static function associativeReverseSort(array &$array, int $flags = SORT_REGULAR): bool
     {
         return Arrays\arsort($array, $flags);

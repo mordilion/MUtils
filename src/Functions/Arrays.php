@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace MUtils\Arrays;
 
 use InvalidArgumentException;
+use OutOfBoundsException;
 use function arsort as PHPArsort;
 use function asort as PHPAsort;
 use function krsort as PHPKrsort;
@@ -108,6 +109,22 @@ function array_group_by(array $array, bool $preserveKeys, $column): array
     }
 
     return $grouped;
+}
+
+function array_move_element(array &$array, int $fromIndex, int $toIndex): void
+{
+    $count = count($array);
+
+    if ($fromIndex < 0 || $fromIndex >= $count) {
+        throw new OutOfBoundsException(sprintf('The provided parameter $fromIndex must be between 0 and %d', $count - 1));
+    }
+
+    if ($toIndex < 0 || $toIndex >= $count) {
+        throw new OutOfBoundsException(sprintf('The provided parameter $toIndex must be between 0 and %d', $count - 1));
+    }
+
+    $extracted = array_splice($array, $fromIndex, 1);
+    array_splice($array, $toIndex, 0, $extracted);
 }
 
 /**

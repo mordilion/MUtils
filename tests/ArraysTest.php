@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use function MUtils\Arrays\array_group_by as UtilsArrayGroupBy;
+use function MUtils\Arrays\array_move_element;
 use function MUtils\Arrays\arsort as UtilsArsort;
 use function MUtils\Arrays\asort as UtilsAsort;
 use function MUtils\Arrays\krsort as UtilsKrsort;
@@ -235,5 +236,15 @@ final class ArraysTest extends TestCase
         });
 
         $this->assertSame($expected, $input);
+    }
+
+    public function testArrayMoveElement(): void
+    {
+        $input = ['a', 'c', 'd', 'e', 'b', 'f'];
+        $expected = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+        array_move_element($input, 4, 1);
+
+        $this->assertEquals($expected, $input);
     }
 }
