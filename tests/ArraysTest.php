@@ -5,6 +5,8 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use function MUtils\Arrays\array_group_by as UtilsArrayGroupBy;
 use function MUtils\Arrays\array_move_element;
+use function MUtils\Arrays\array_prefix_add;
+use function MUtils\Arrays\array_prefix_remove;
 use function MUtils\Arrays\arsort as UtilsArsort;
 use function MUtils\Arrays\asort as UtilsAsort;
 use function MUtils\Arrays\krsort as UtilsKrsort;
@@ -128,6 +130,46 @@ final class ArraysTest extends TestCase
         $grouped = UtilsArrayGroupBy(self::GROUP_DATA, true,'state', 'city');
 
         $this->assertSame($expected, $grouped);
+    }
+
+    public function testArrayPrefixAddAddsTheProvidedPrefix(): void
+    {
+        $input = ['test1', 'test2', 'test3'];
+        $expected = ['prefix_0', 'prefix_1', 'prefix_2'];
+
+        $newArray = array_prefix_add($input, 'prefix_');
+
+        $this->assertEquals($expected, array_keys($newArray));
+    }
+
+    public function testArrayPrefixAddAddsNoPrefixIfEmptyPrefixIsProvided(): void
+    {
+        $input = ['test1', 'test2', 'test3'];
+        $expected = [0, 1, 2];
+
+        $newArray = array_prefix_add($input, '');
+
+        $this->assertEquals($expected, array_keys($newArray));
+    }
+
+    public function testArrayPrefixRemoveRemovesTheProvidedPrefix(): void
+    {
+        $input = ['prefix_0' => 'test1', 'different_prefix_1' => 'test2', 'prefix_2' => 'test3'];
+        $expected = [0, 'different_prefix_1', 2];
+
+        $newArray = array_prefix_remove($input, 'prefix_');
+
+        $this->assertEquals($expected, array_keys($newArray));
+    }
+
+    public function testArrayPrefixRemoveRemovesNoPrefixIfEmptyPrefixIsProvided(): void
+    {
+        $input = ['prefix_0' => 'test1', 'different_prefix_1' => 'test2', 'prefix_2' => 'test3'];
+        $expected = ['prefix_0', 'different_prefix_1', 'prefix_2'];
+
+        $newArray = array_prefix_remove($input, '');
+
+        $this->assertEquals($expected, array_keys($newArray));
     }
 
     public function testArsortHasAStableSortedResult(): void

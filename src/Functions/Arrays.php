@@ -127,6 +127,26 @@ function array_move_element(array &$array, int $fromIndex, int $toIndex): void
     array_splice($array, $toIndex, 0, $extracted);
 }
 
+function array_prefix_add(array $array, string $prefix): array
+{
+    return array_combine(
+        array_map(static function ($key) use ($prefix) {
+            return $prefix . $key;
+        }, array_keys($array)),
+        $array
+    );
+}
+
+function array_prefix_remove(array $array, string $prefix): array
+{
+    return array_combine(
+        array_map(static function ($key) use ($prefix) {
+            return \MUtils\Strings\str_starts_with($key, $prefix) ? substr($key, mb_strlen($prefix)) : $key;
+        }, array_keys($array)),
+        $array
+    );
+}
+
 /**
  * Stretches the information Key, Value and Index as an array-item
  */

@@ -15,6 +15,11 @@ namespace MUtils;
 
 class Arrays
 {
+    public static function addPrefix(array $array, string $prefix): array
+    {
+        return Arrays\array_prefix_add($array, $prefix);
+    }
+
     public static function compareFlags($a, $b, int $flags): int
     {
         return Arrays\array_compare_flags($a, $b, $flags);
@@ -60,6 +65,11 @@ class Arrays
     public static function naturalSort(array &$array): bool
     {
         return Arrays\natsort($array);
+    }
+
+    public static function removePrefix(array $array, string $prefix): array
+    {
+        return Arrays\array_prefix_remove($array, $prefix);
     }
 
     public static function reverseSort(array &$array, int $flags = SORT_REGULAR): bool

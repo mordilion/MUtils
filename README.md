@@ -11,7 +11,7 @@ If you use the functions from this Library, it checks if you are using PHP 8.0+ 
 
 ## Useful Functions
 - Array Functions - Functions to optimize working with arrays
-  - _array_compare_flags, array_move_element, array_group_by_
+  - _array_compare_flags, array_move_element, array_group_by, array_prefix_add, array_prefix_remove_
 - Bitwise Functions - Some useful functions to work with sets of bits.
   - _bit_set, bit_isset, bit_unset_
 - Reflection Functions - Useful functions to get ReflectionClass, ReflectionMethod and ReflectionProperty on inheritance
