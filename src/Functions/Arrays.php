@@ -141,7 +141,7 @@ function array_prefix_remove(array $array, string $prefix): array
 {
     return array_combine(
         array_map(static function ($key) use ($prefix) {
-            return \MUtils\Strings\str_starts_with($key, $prefix) ? substr($key, mb_strlen($prefix)) : $key;
+            return \MUtils\Strings\str_starts_with($key, $prefix) ? mb_substr($key, mb_strlen($prefix)) : $key;
         }, array_keys($array)),
         $array
     );
