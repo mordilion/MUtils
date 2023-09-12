@@ -164,8 +164,8 @@ final class ArraysTest extends TestCase
 
     public function testArrayPrefixRemoveRemovesNoPrefixIfEmptyPrefixIsProvided(): void
     {
-        $input = ['prefix_0' => 'test1', 'different_prefix_1' => 'test2', 'prefix_2' => 'test3'];
-        $expected = ['prefix_0', 'different_prefix_1', 'prefix_2'];
+        $input = ['prefix_0' => 'test1', 'different_prefix_1' => 'test2', 'prefix_2' => 'test3', 4 => 'test4'];
+        $expected = ['prefix_0', 'different_prefix_1', 'prefix_2', 4];
 
         $newArray = array_prefix_remove($input, '');
 
