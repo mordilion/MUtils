@@ -160,6 +160,11 @@ final class ArraysTest extends TestCase
         $newArray = array_prefix_remove($input, 'prefix_');
 
         $this->assertEquals($expected, array_keys($newArray));
+
+        $expected = [1, 2, 3];
+        $newArray = array_prefix_remove($input, 'test', ARRAY_PREFIX_VALUE);
+
+        $this->assertEquals($expected, array_values($newArray));
     }
 
     public function testArrayPrefixRemoveRemovesNoPrefixIfEmptyPrefixIsProvided(): void

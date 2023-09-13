@@ -19,6 +19,7 @@ use function arsort as PHPArsort;
 use function asort as PHPAsort;
 use function krsort as PHPKrsort;
 use function ksort as PHPKsort;
+use function MUtils\Bits\bit_isset;
 use function natcasesort as PHPNatcasesort;
 use function natsort as PHPNatsort;
 use function rsort as PHPRsort;
@@ -26,6 +27,9 @@ use function sort as PHPSort;
 use function uasort as PHPUasort;
 use function uksort as PHPUksort;
 use function usort as PHPUsort;
+
+define('ARRAY_PREFIX_KEY', 1);
+define('ARRAY_PREFIX_VALUE', 2);
 
 /**
  * Compares the provided values based on the flag based sort comparison logic
@@ -127,24 +131,30 @@ function array_move_element(array &$array, int $fromIndex, int $toIndex): void
     array_splice($array, $toIndex, 0, $extracted);
 }
 
-function array_prefix_add(array $array, string $prefix): array
+function array_prefix_add(array $array, string $prefix, int $options = ARRAY_PREFIX_KEY): array
 {
-    return array_combine(
-        array_map(static function ($key) use ($prefix) {
-            return $prefix . $key;
-        }, array_keys($array)),
-        $array
-    );
+    $items = array_map(static function ($item) use ($prefix) {
+        return $prefix . $item;
+    }, bit_isset($options, ARRAY_PREFIX_KEY) ? array_keys($array) : $array);
+
+    if (bit_isset($options, ARRAY_PREFIX_KEY)) {
+        return array_combine($items, $array);
+    }
+
+    return array_combine(array_keys($array), $items);
 }
 
-function array_prefix_remove(array $array, string $prefix): array
+function array_prefix_remove(array $array, string $prefix, int $options = ARRAY_PREFIX_KEY): array
 {
-    return array_combine(
-        array_map(static function ($key) use ($prefix) {
-            return \MUtils\Strings\str_starts_with((string) $key, $prefix) ? mb_substr((string) $key, mb_strlen($prefix)) : $key;
-        }, array_keys($array)),
-        $array
-    );
+    $items = array_map(static function ($item) use ($prefix) {
+            return \MUtils\Strings\str_starts_with((string) $item, $prefix) ? mb_substr((string) $item, mb_strlen($prefix)) : $item;
+        }, bit_isset($options, ARRAY_PREFIX_KEY) ? array_keys($array) : $array);
+
+    if (bit_isset($options, ARRAY_PREFIX_KEY)) {
+        return array_combine($items, $array);
+    }
+
+    return array_combine(array_keys($array), $items);
 }
 
 /**
