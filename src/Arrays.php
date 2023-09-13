@@ -15,9 +15,9 @@ namespace MUtils;
 
 class Arrays
 {
-    public static function addPrefix(array $array, string $prefix): array
+    public static function addPrefix(array $array, string $prefix, int $options = ARRAY_PREFIX_KEY): array
     {
-        return Arrays\array_prefix_add($array, $prefix);
+        return Arrays\array_prefix_add($array, $prefix, $options);
     }
 
     public static function compareFlags($a, $b, int $flags): int
@@ -67,9 +67,9 @@ class Arrays
         return Arrays\natsort($array);
     }
 
-    public static function removePrefix(array $array, string $prefix): array
+    public static function removePrefix(array $array, string $prefix, int $options = ARRAY_PREFIX_KEY): array
     {
-        return Arrays\array_prefix_remove($array, $prefix);
+        return Arrays\array_prefix_remove($array, $prefix, $options);
     }
 
     public static function reverseSort(array &$array, int $flags = SORT_REGULAR): bool
