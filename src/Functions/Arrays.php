@@ -45,10 +45,10 @@ function array_compare_flags($a, $b, int $flags): int
 
     switch ($flags) {
         case SORT_STRING:
-            return strcmp($a, $b);
+            return strcmp((string) $a, (string) $b);
 
         case SORT_STRING | SORT_FLAG_CASE:
-            return strcasecmp($a, $b);
+            return strcasecmp((string) $a, (string) $b);
 
         case SORT_NATURAL:
             return strnatcmp((string) $a, (string) $b);
@@ -57,7 +57,7 @@ function array_compare_flags($a, $b, int $flags): int
             return strnatcasecmp((string) $a, (string) $b);
 
         case SORT_LOCALE_STRING:
-            return strcoll($a, $b);
+            return strcoll((string) $a, (string) $b);
 
         case SORT_NUMERIC:
             return (float) $a <=> (float) $b;
@@ -118,6 +118,10 @@ function array_group_by(array $array, bool $preserveKeys, $column): array
 function array_move_element(array &$array, int $fromIndex, int $toIndex): void
 {
     $count = count($array);
+
+    if ($count === 0) {
+        throw new OutOfBoundsException('Cannot move elements in an empty array');
+    }
 
     if ($fromIndex < 0 || $fromIndex >= $count) {
         throw new OutOfBoundsException(sprintf('The provided parameter $fromIndex must be between 0 and %d', $count - 1));

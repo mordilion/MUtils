@@ -22,32 +22,32 @@ use ReflectionProperty;
 class Objects
 {
     /**
-     * @param object|null $instance
+     * @param string|object|null $objectOrClass
      *
      * @throws InvalidArgumentException|ReflectionException
      */
-    public static function getReflectionClass($instance): ?ReflectionClass
+    public static function getReflectionClass($objectOrClass): ?ReflectionClass
     {
-        return Objects\get_reflection_class($instance);
+        return Objects\get_reflection_class($objectOrClass);
     }
 
     /**
-     * @param object|null $instance
+     * @param string|object|null $objectOrClass
      *
      * @throws InvalidArgumentException
      */
-    public static function getReflectionMethod($instance, string $name): ?ReflectionMethod
+    public static function getReflectionMethod($objectOrClass, string $name): ?ReflectionMethod
     {
-        return Objects\get_reflection_method($instance, $name);
+        return Objects\get_reflection_method($objectOrClass, $name);
     }
 
     /**
-     * @param object|null $instance
+     * @param string|object|null $objectOrClass
      *
      * @throws InvalidArgumentException
      */
-    public static function getReflectionProperty($instance, string $name): ?ReflectionProperty
+    public static function getReflectionProperty($objectOrClass, string $name): ?ReflectionProperty
     {
-        return Objects\get_reflection_property($instance, $name);
+        return Objects\get_reflection_property($objectOrClass, $name);
     }
 }

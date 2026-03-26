@@ -23,6 +23,10 @@ function str_contains(string $haystack, string $needle): bool
         return PHPStrContains($haystack, $needle);
     }
 
+    if ($needle === '') {
+        return true;
+    }
+
     return mb_strpos($haystack, $needle) !== false;
 }
 
@@ -44,6 +48,10 @@ function str_starts_with(string $haystack, string $needle): bool
 {
     if (version_compare(phpversion(), '8.0.0', '>=')) {
         return PHPStrStartsWith($haystack, $needle);
+    }
+
+    if ($needle === '') {
+        return true;
     }
 
     return mb_strpos($haystack, $needle) === 0;
